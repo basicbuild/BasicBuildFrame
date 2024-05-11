@@ -3,6 +3,8 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
+TARGET   = MainUIFrame # @brief 指定生成的应用程序名和图标
+#RC_ICONS = MainUIFrame.ico
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -43,8 +45,8 @@ win32:CONFIG(release, debug|release){
 
 # @brief 库的引用
 win32:CONFIG(debug, debug|release){
-    LIBS += -L$$OUTPUT_DIR/debug/ -lCore 
-    LIBS += -L$$OUTPUT_DIR/debug/ -lSubUIFrame
+    LIBS += -L$$OUTPUT_DIR/debug/ -lCored
+    LIBS += -L$$OUTPUT_DIR/debug/ -lSubUIFramed
 }
 win32:CONFIG(release, debug|release){
     LIBS += -L$$OUTPUT_DIR/release/ -lCore  
@@ -57,13 +59,6 @@ INCLUDEPATH += $$PWD/../Core \
 # @brief 依赖路径
 DEPENDPATH += $$PWD/../Core \   # DEPENDPATH 是指定那些文件在修改后需要重新运行 qmake 的路径
                            $$PWD/../SubUIFrame
-
-
-# @brief 指定生成的应用程序名和图标
-#TARGET   = MainUIFrame111
-#TARGET   = $$PRO_NAME
-#RC_ICONS = MainUIFrame.ico
-
 
 SOURCES += \
     main.cpp \

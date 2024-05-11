@@ -1,10 +1,10 @@
 ﻿#ifndef SUBUIFRAME_H
 #define SUBUIFRAME_H
-#include <QWidget>
+#include <QMainWindow>
 
 #include "SubUIFrame_global.h"
 
-class SUBUIFRAME_EXPORT SubUIFrame : public QWidget
+class SUBUIFRAME_EXPORT SubUIFrame : public QMainWindow
 {
 public:
     SubUIFrame(QWidget* parent = nullptr);
