@@ -3,22 +3,17 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
-TARGET   = MainUIFrame # @brief 指定生成的应用程序名和图标
-#RC_ICONS = MainUIFrame.ico
+DEBUG_NAME = MainUIFramed
+RELEASE_NAME = MainUIFrame
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+#######################通用配置#########################
 # $$PWD .pro或.pri所在的路径
-
-# @brief 变量定义
 BUILD_DIR = $$PWD/../build                      # 临时文件生成的根目录
 OUTPUT_DIR = $$PWD/../output               # 目标文件生成的根目录
-PRO_NAME = $$basename(_PRO_FILE_)
-
-message("Build directory: " $$BUILD_DIR)
-message("Output directory: " $$OUTPUT_DIR)
 
 # @brief 配置临时文件和生成文件位置
 win32:CONFIG(debug, debug|release){
@@ -43,6 +38,15 @@ win32:CONFIG(release, debug|release){
     DESTDIR = $$OUTPUT_DIR/release
 }
 
+# @brief 指定生成的应用程序名
+win32:CONFIG(debug, debug|release){
+    TARGET  = $$DEBUG_NAME
+}
+win32:CONFIG(release, debug|release){
+    TARGET  = $$RELEASE_NAME
+}
+
+#######################个性配置#########################
 # @brief 库的引用
 win32:CONFIG(debug, debug|release){
     LIBS += -L$$OUTPUT_DIR/debug/ -lCored
@@ -59,6 +63,8 @@ INCLUDEPATH += $$PWD/../Core \
 # @brief 依赖路径
 DEPENDPATH += $$PWD/../Core \   # DEPENDPATH 是指定那些文件在修改后需要重新运行 qmake 的路径
                            $$PWD/../SubUIFrame
+
+#####################################################
 
 SOURCES += \
     main.cpp \

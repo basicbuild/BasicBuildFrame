@@ -3,14 +3,13 @@ QT += widgets
 TEMPLATE = lib
 CONFIG += c++17
 DEFINES += SUBUIFRAME_LIBRARY
+DEBUG_NAME = SubUIFramed
+RELEASE_NAME = SubUIFrame
 
 #######################通用配置#########################
 # $$PWD .pro或.pri所在的路径
 BUILD_DIR = $$PWD/../build
 OUTPUT_DIR = $$PWD/../output
-
-# @brief 配置预处理宏定义
-DEFINES += CORE_LIBRARY
 
 # @brief 配置临时文件和生成文件位置
 win32:CONFIG(debug, debug|release){
@@ -35,14 +34,15 @@ win32:CONFIG(release, debug|release){
     DESTDIR = $$OUTPUT_DIR/release
 }
 
-#######################个性配置#########################
 # @brief 指定生成的应用程序名
 win32:CONFIG(debug, debug|release){
-    TARGET  = SubUIFramed
+    TARGET  = $$DEBUG_NAME
 }
 win32:CONFIG(release, debug|release){
-    TARGET  = SubUIFrame
+    TARGET  = $$RELEASE_NAME
 }
+
+#######################个性配置#########################
 #####################################################
 
 SOURCES += \

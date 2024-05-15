@@ -3,6 +3,8 @@ QT -=  gui
 TEMPLATE = lib
 DEFINES += SUBDLL_LIBRARY
 CONFIG += c++17
+DEBUG_NAME = Cored
+RELEASE_NAME = Core
 
 #######################通用配置#########################
 # $$PWD .pro或.pri所在的路径
@@ -35,14 +37,15 @@ win32:CONFIG(release, debug|release){
     DESTDIR = $$OUTPUT_DIR/release
 }
 
-#######################个性配置#########################
 # @brief 指定生成的应用程序名
 win32:CONFIG(debug, debug|release){
-    TARGET  = Cored
+    TARGET  = $$DEBUG_NAME
 }
 win32:CONFIG(release, debug|release){
-    TARGET  = Core
+    TARGET  = $$RELEASE_NAME
 }
+
+#######################个性配置#########################
 #####################################################
 
 SOURCES += \
